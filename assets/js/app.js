@@ -16,7 +16,7 @@ let id = 0;
 const options = {weekday:"long", month:"short", day:"numeric"};
 const today = new Date();
 
-dateElement.innerHTML = today.toLocaleDateString("fr-FR", options);
+dateElement.innerHTML = "Le " + today.toLocaleDateString("fr-FR", options);
 
 //Add Todo Function
 addToDo = (toDo, id, done, trash) => {

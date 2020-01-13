@@ -9,7 +9,7 @@ body{
 .container{
     padding:10px;
     max-width:500px;
-    margin:0 auto;
+    margin:80px auto;
 }
 
 /* ------------ header ------------ */
@@ -84,6 +84,7 @@ body{
             top:10px;
             background-color: #FFF;
             max-width:285px;
+            overflow: scroll;
         }
         i.de{
             position: absolute;
@@ -123,7 +124,8 @@ body{
         position: absolute;
         left: 50px;
         height: 35px;
-        max-width: 430px;
+        max-width: 350px;
+        width: 100%;
         background-color: transparent;
         border: none;
         font-size: 20px;
