@@ -9,8 +9,7 @@ const UNCHECK = "fa-circle-thin";
 const LINE_THROUGH = "lineThrough";
 
 //Variables
-let LIST = [];
-let id = 0;
+let LIST, id;
 
 //Show today date
 const options = {weekday:"long", month:"short", day:"numeric"};
@@ -37,6 +36,35 @@ addToDo = (toDo, id, done, trash) => {
 
     list.insertAdjacentHTML(position, item);
 };
+
+//LoadList Function
+loadList = array => {
+    array.forEach(item => {
+        addToDo(item.name, item.id, item.done, item.trash);
+    });
+};
+
+// Get Items From LocalStorage
+let data = localStorage.getItem("TODO");
+
+//Check if data is not empty
+if(data)
+{
+    LIST = JSON.parse(data);
+    id = LIST.length;
+    loadList(LIST); //load the list to the user interface
+}
+else
+{
+    LIST = [];
+    id = 0;
+}
+
+// clear data from localstorage
+clear.addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+});
 
 //Complete Todo Function
 completeToDo = element => {
@@ -66,12 +94,15 @@ document.addEventListener("keyup", event => {
                 done:false,
                 trash:false
             });
+            //Add Item to the LocalStorage
+            localStorage.setItem("TODO", JSON.stringify(LIST));
             id++;
         }
         input.value = "";
     }
 });
 
+//When clicked in checkbox or delete
 list.addEventListener("click", event => {
     const element = event.target; //Return the cliked element inside list
     const elementAction = element.attributes.action.value; // Return complete or delete
@@ -84,4 +115,6 @@ list.addEventListener("click", event => {
     {
         removeToDo(element);
     }
+    //Add Item to the LocalStorage
+    localStorage.setItem("TODO", JSON.stringify(LIST));
 });
