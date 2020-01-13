@@ -73,8 +73,7 @@ body {
       left: 50px;
       top: 10px;
       background-color: #FFF;
-      max-width: 285px;
-      overflow: scroll; }
+      max-width: 285px; }
     .content ul i.de {
       position: absolute;
       font-size: 25px;

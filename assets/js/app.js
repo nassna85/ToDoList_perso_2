@@ -38,7 +38,21 @@ addToDo = (toDo, id, done, trash) => {
     list.insertAdjacentHTML(position, item);
 };
 
-//Complete Todo Function => TODO
+//Complete Todo Function
+completeToDo = element => {
+    element.classList.toggle(CHECK);
+    element.classList.toggle(UNCHECK);
+    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+
+    //Same as =>  LIST[element.id].done = LIST[element.id].done ? false : true;
+    LIST[element.id].done = !LIST[element.id].done;
+};
+
+//Remove Todo Function
+removeToDo = element => {
+    element.parentNode.parentNode.removeChild(element.parentNode);
+    LIST[element.id].trash = true;
+};
 
 // Add an item with enter key
 document.addEventListener("keyup", event => {
@@ -58,4 +72,16 @@ document.addEventListener("keyup", event => {
     }
 });
 
-//addToDo("Test", 1, false, true);
+list.addEventListener("click", event => {
+    const element = event.target; //Return the cliked element inside list
+    const elementAction = element.attributes.action.value; // Return complete or delete
+
+    if(elementAction === "complete")
+    {
+        completeToDo(element);
+    }
+    else if(elementAction === "delete")
+    {
+        removeToDo(element);
+    }
+});
