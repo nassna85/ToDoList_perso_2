@@ -11,7 +11,7 @@
   "author": "Naïm ELmaftouhi",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^2.0.2"
   }
 }
